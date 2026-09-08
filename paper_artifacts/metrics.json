@@ -1,0 +1,110 @@
+{
+    "step": 100000,
+    "domains": {
+        "Educational Web": {
+            "cross_entropy": 3.6363089084625244,
+            "perplexity": 37.95149543482593
+        },
+        "Scientific Reasoning": {
+            "cross_entropy": 1.9524695873260498,
+            "perplexity": 7.046066989508197
+        },
+        "Algorithmic Python": {
+            "cross_entropy": 1.0376613140106201,
+            "perplexity": 2.822608095264681
+        }
+    },
+    "degradation": [
+        {
+            "length": 64,
+            "ce": 3.462672472000122,
+            "ppl": 31.902120214933714
+        },
+        {
+            "length": 128,
+            "ce": 3.9091057777404785,
+            "ppl": 49.85435116431661
+        },
+        {
+            "length": 256,
+            "ce": 3.095959186553955,
+            "ppl": 22.108434483572953
+        },
+        {
+            "length": 384,
+            "ce": 2.186366081237793,
+            "ppl": 8.902802201096934
+        },
+        {
+            "length": 512,
+            "ce": 1.731513500213623,
+            "ppl": 5.649197503058962
+        },
+        {
+            "length": 640,
+            "ce": 1.4414700269699097,
+            "ppl": 4.22690491633292
+        }
+    ],
+    "ood_responses": {
+        "Factual Scientific": 1.009730577468872,
+        "Code Syntax": 1.0100849866867065,
+        "Corrupted OOD Noise": 1.0101090669631958
+    },
+    "jepa_similarities": [
+        {
+            "pair": [
+                "A quick brown fox jumps over the lazy canine.",
+                "A fast amber vulpine leaps above the sleepy dog."
+            ],
+            "cosine_similarity": 0.894472062587738
+        },
+        {
+            "pair": [
+                "The scientific method relies upon empirical observation and reproducible experiments.",
+                "Systematic inquiry depends on measurable evidence and repeatable trials."
+            ],
+            "cosine_similarity": 0.7857655882835388
+        },
+        {
+            "pair": [
+                "Photosynthetic organisms absorb sunlight to convert carbon dioxide into glucose.",
+                "Green vegetation utilizes solar rays to transform air molecules into sugars."
+            ],
+            "cosine_similarity": 0.8806434869766235
+        },
+        {
+            "pair": [
+                "The function sorts the elements of an array in ascending order.",
+                "The routine arranges the items of a sequence from smallest to largest."
+            ],
+            "cosine_similarity": 0.7026085257530212
+        }
+    ],
+    "latency": {
+        "context_sizes": [
+            64,
+            128,
+            256,
+            512,
+            768,
+            1024
+        ],
+        "recompute_ms": [
+            4.784399992786348,
+            5.274199997074902,
+            4.389400011859834,
+            6.702700047753751,
+            10.044199996627867,
+            12.33729999512434
+        ],
+        "cached_ms": [
+            0.6756999408826232,
+            0.649400089867413,
+            0.6959000946953893,
+            0.8225000109523535,
+            0.8186999820172787,
+            0.8275000490248203
+        ]
+    }
+}

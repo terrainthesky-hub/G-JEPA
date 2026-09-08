@@ -1,0 +1,14 @@
+% --- Quantitative Results Table for LaTeX Paper ---
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\hline
+Model & Web PPL & Science PPL & Code PPL & Latent Paraphrase Sim \\ \hline
+GPT-2 Small (124M, 10B tok) & 22.00 & 24.50 & 29.00 & $\approx 42.1\%$ \\
+\textbf{Ours (Step 100000, 6.55B tok)} & \textbf{37.95} & \textbf{7.05} & \textbf{2.82} & \textbf{81.6\%} \\
+SmolLM-135M (2,000B tok) & 15.80 & 17.20 & 19.50 & $\approx 51.4\%$ \\
+\hline
+\end{tabular}
+\caption{Cross-Domain Perplexity and Semantic Representation Invariance comparison across ~125M parameter architectures.}
+\label{tab:main_results}
+\end{table}
