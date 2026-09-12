@@ -222,7 +222,7 @@ def audit_needle_retrieval(model, tokenizer, total_len: int = 1000, device: str 
 # ============================================================================
 def run_diagnostics():
     parser = argparse.ArgumentParser(description="RoPE-MSA-JEPA Diagnostic Probe")
-    parser.add_argument("--checkpoint", type=str, default="./checkpoints_jepa_msa_rope/step_5000.pt", help="Path to checkpoint .pt file")
+    parser.add_argument("--checkpoint", type=str, default="./checkpoints_jepa_msa_rope/step_15000.pt", help="Path to checkpoint .pt file")
     parser.add_argument("--prompt", type=str, default="Artificial intelligence and memory sparse attention allow models to", help="Test prompt")
     args = parser.parse_args()
 
