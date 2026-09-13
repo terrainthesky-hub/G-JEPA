@@ -51,7 +51,7 @@ class TrainConfig:
     micro_batch_size: int = 8
     grad_accum_steps: int = 8
     
-    total_steps: int = 100000
+    total_steps: int = 50000
     warmup_steps: int = 2000
     max_lr: float = 4e-4
     min_lr: float = 4e-5
@@ -61,7 +61,7 @@ class TrainConfig:
     log_interval: int = 25
     save_interval: int = 2500
     checkpoint_dir: str = "./checkpoints_jepa_msa_rope"
-    resume_checkpoint: str = "./checkpoints_jepa_msa_rope/step_25000.pt"    # Path to resume, or leave empty to train from step 0
+    resume_checkpoint: str = ""    # Path to resume, or leave empty to train from step 0
 
 
 # ============================================================================

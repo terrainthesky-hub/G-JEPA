@@ -19,6 +19,9 @@ torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
 
+# python train_stage2_curriculum.py --stage 2a
+# python train_stage2_curriculum.py --stage 2b
+
 # ============================================================================
 # 1. Stage Configurations (Tuned for 16GB RTX 5080)
 # ============================================================================
