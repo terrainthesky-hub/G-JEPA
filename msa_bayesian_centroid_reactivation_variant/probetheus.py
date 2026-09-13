@@ -222,7 +222,7 @@ def audit_needle_retrieval(model, tokenizer, total_len: int = 1000, device: str 
 # ============================================================================
 def run_diagnostics():
     parser = argparse.ArgumentParser(description="RoPE-MSA-JEPA Diagnostic Probe")
-    parser.add_argument("--checkpoint", type=str, default="./checkpoints_jepa_msa_rope/step_15000.pt", help="Path to checkpoint .pt file")
+    parser.add_argument("--checkpoint", type=str, default="./checkpoints_jepa_msa_rope/step_32500.pt", help="Path to checkpoint .pt file")
     parser.add_argument("--prompt", type=str, default="Artificial intelligence and memory sparse attention allow models to", help="Test prompt")
     args = parser.parse_args()
 
@@ -240,6 +240,9 @@ def run_diagnostics():
     ckpt = torch.load(args.checkpoint, map_location=device, weights_only=False)
     cfg = ckpt.get("config", TrainConfig())
     step = ckpt.get("step", "Unknown")
+
+    cfg.top_k_chunks = 16   # <--- ADD THIS LINE HERE
+
     
     tokenizer = AutoTokenizer.from_pretrained("gpt2")
     tokenizer.model_max_length = int(1e9)
@@ -305,6 +308,13 @@ def run_diagnostics():
     for depth, res in niah_2k.items():
         status = "PASSED" if res["target_rank"] == 1 else f"Rank #{res['target_rank']}"
         print(f"      • {depth:10s} | Status: {status:10s} | Pred: '{res['predicted_token']}' | Target Prob: {res['target_probability']}")
+
+    # # Test c: Extrapolated Length (16k tokens - enabled by Document-Wise RoPE)
+    # print("\n  [C] Extrapolation Test (16,000 tokens - 16× Training Context):")
+    # niah_16k = audit_needle_retrieval(model, tokenizer, total_len=16000, device=device)
+    # for depth, res in niah_16k.items():
+    #     status = "PASSED" if res["target_rank"] == 1 else f"Rank #{res['target_rank']}"
+    #     print(f"      • {depth:10s} | Status: {status:10s} | Pred: '{res['predicted_token']}' | Target Prob: {res['target_probability']}")
 
     # ------------------------------------------------------------------------
     # Probe 4: Qualitative Text Generation
